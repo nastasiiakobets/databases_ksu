@@ -13,7 +13,7 @@ CREATE TABLE books
   category VARCHAR (50) DEFAULT 'Підручник'
 );
 
-CREATE INDEX idx_Book ON BookTable(num_ ASC ,name_ ASC, subject_ ASC, category_ ASC);
+CREATE INDEX idx_Book ON books (num ASC ,name_ ASC, subject ASC, category ASC);
 
 INSERT INTO books(num, isnew, price, name_, publisher, pages, format, data_,circulation, topic, category)
 VALUES
@@ -45,16 +45,16 @@ VALUES
 DROP TABLE books; 
 
 
-ALTER TABLE BookTable
-	ADD COLUMN Author VARCHAR(15) AFTER `price_`;
+ALTER TABLE books
+	ADD COLUMN Author VARCHAR(15) AFTER `price`;
     
-ALTER TABLE BookTable
-	MODIFY COLUMN Author VARCHAR(20) AFTER `price_`;
+ALTER TABLE books
+	MODIFY COLUMN Author VARCHAR(20) AFTER `price`;
     
-ALTER TABLE BookTable
+ALTER TABLE books
 	DROP COLUMN Author;
 
-ALTER TABLE BookTable DROP INDEX idx_Book;
-CREATE UNIQUE INDEX idx_Book ON BookTable(num_ DESC , name_ ASC, subject_ ASC, category_ ASC);
+ALTER TABLE books DROP INDEX idx_Book;
+CREATE UNIQUE INDEX idx_Book ON books(num DESC , name_ ASC, subject ASC, category ASC);
 
-ALTER TABLE BookTable DROP INDEX idx_Book;
+ALTER TABLE books DROP INDEX idx_Book;
